@@ -5,3 +5,27 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, 'shop/index.html')
+
+
+def about(request):
+    return HttpResponse("<h1>we are at about</h1>")
+
+
+def contact(request):
+    return HttpResponse("<h1>we are at contact</h1>")
+
+
+def tracker(request):
+    return HttpResponse("<h1>we are at tracker</h1>")
+
+
+def search(request):
+    return HttpResponse("<h1>we are at search</h1>")
+
+
+def productView(request):
+    return HttpResponse("<h1>we are at product View</h1>")
+
+
+def checkout(request):
+    return HttpResponse("<h1>we are at checkout</h1>")
