@@ -8,7 +8,7 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse("<h1>we are at about</h1>")
+    return render(request, 'shop/about.html')
 
 
 def contact(request):
