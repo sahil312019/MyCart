@@ -13,7 +13,10 @@
           .col-md-3 img{
 
           width: 227px;
-          max-height: 242px;
+          max-height: 248px;
+          object-fit:contain;
+          padding:30px; 
+        
           }
 
           body .carousel-indicator li{
@@ -66,7 +69,7 @@ bottom: auto;
             <div class="card-body">
                 <h5 class="card-title">{{product.0.product_name}}</h5>
                 <p class="card-text">{{product.0.desc}}</p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button id="pr{{product.0.id}}" class="btn btn-primary cart">Add To Cart</button>
             </div>
           </div>
        </div>
@@ -79,16 +82,15 @@ bottom: auto;
             <div class="card-body">
               <h5 class="card-title">{{i.product_name}}</h5>
               <p class="card-text">{{i.desc}}</p>
-              <a href="#" class="btn btn-primary">Add To Cart</a>
+              <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
             </div>
           </div>
         </div>
         {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
-        <!-- {% if forloop.counter|add:1|divisibleby:4 and forloop.counter > 0 and not forloop.last %} -->
       </div><div class="carousel-item">
         {% endif %}
 
-      {% endfor %}
+        {% endfor %}
     </div>
 
 
@@ -105,3 +107,30 @@ bottom: auto;
     {% endfor %}
 </div>
  {% endblock %}
+
+{% block js %}
+<script>
+console.log('working');
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+}
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+});
+</script>
+{% endblock %}
