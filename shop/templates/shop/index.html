@@ -84,10 +84,11 @@ bottom: auto;
           </div>
         </div>
         {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+        <!-- {% if forloop.counter|add:1|divisibleby:4 and forloop.counter > 0 and not forloop.last %} -->
       </div><div class="carousel-item">
         {% endif %}
 
-        {% endfor %}
+      {% endfor %}
     </div>
 
 
