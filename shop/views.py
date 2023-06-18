@@ -36,8 +36,11 @@ def search(request):
     return HttpResponse("<h1>we are at search</h1>")
 
 
-def productView(request):
-    return HttpResponse("<h1>we are at product View</h1>")
+def productView(request, myid):
+    product = Product.objects.filter(id=myid)
+    # print(product)
+    # id = myid will make sure the chosen item is only present in query set which we are accessing using 0th index
+    return render(request, "shop/prodView.html", {'product': product[0]})
 
 
 def checkout(request):
