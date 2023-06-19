@@ -56,4 +56,4 @@ def productView(request, myid):
 
 
 def checkout(request):
-    return HttpResponse("<h1>we are at checkout</h1>")
+    return render(request, 'shop/checkout.html')
